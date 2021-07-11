@@ -13,6 +13,8 @@
 		5A0C0868268AE912000ACDF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A0C0867268AE912000ACDF0 /* Preview Assets.xcassets */; };
 		5A0C086A268AE912000ACDF0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C0869268AE912000ACDF0 /* Persistence.swift */; };
 		5A0C086D268AE912000ACDF0 /* StocksApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C086B268AE912000ACDF0 /* StocksApp.xcdatamodeld */; };
+		5A5E5DC52691764B00070511 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5E5DC42691764B00070511 /* Utilities.swift */; };
+		5A5E5DC72691843000070511 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5E5DC62691843000070511 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5A0C0869268AE912000ACDF0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5A0C086C268AE912000ACDF0 /* StocksApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StocksApp.xcdatamodel; sourceTree = "<group>"; };
 		5A0C086E268AE912000ACDF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A5E5DC42691764B00070511 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		5A5E5DC62691843000070511 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				5A0C086E268AE912000ACDF0 /* Info.plist */,
 				5A0C086B268AE912000ACDF0 /* StocksApp.xcdatamodeld */,
 				5A0C0866268AE912000ACDF0 /* Preview Content */,
+				5A5E5DC42691764B00070511 /* Utilities.swift */,
+				5A5E5DC62691843000070511 /* Category.swift */,
 			);
 			path = StocksApp;
 			sourceTree = "<group>";
@@ -147,7 +153,9 @@
 				5A0C086A268AE912000ACDF0 /* Persistence.swift in Sources */,
 				5A0C0863268AE90E000ACDF0 /* ContentView.swift in Sources */,
 				5A0C086D268AE912000ACDF0 /* StocksApp.xcdatamodeld in Sources */,
+				5A5E5DC52691764B00070511 /* Utilities.swift in Sources */,
 				5A0C0861268AE90E000ACDF0 /* StocksAppApp.swift in Sources */,
+				5A5E5DC72691843000070511 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
