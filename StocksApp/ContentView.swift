@@ -12,6 +12,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environmentObject(UserSettings())
     }
 }
 
@@ -29,12 +30,17 @@ enum ScreenMode {
 }
 
 struct ContentView: View {
+    @EnvironmentObject var settings : UserSettings
     @State var stockMode : StockMode = .expanding
     @State var screenMode : ScreenMode = .homepage
+    
     var body: some View {
         ZStack {
             Color("background")
                 .ignoresSafeArea()
+                .onAppear(perform: {
+                    Stock.fetchAllStockData()
+                })
             
             VStack {
                 HStack(alignment: .center){
@@ -111,7 +117,7 @@ struct BottomSheet: View {
                     .foregroundColor(Color("background"))
                 }
                 
-                Text("$\(19345.32, specifier: "%.2f")")
+                Text("$\(getPortfolioTotal(), specifier: "%.2f")")
                     .font(.system(size: 50, design: .rounded)).bold()
                     .lineLimit(1).minimumScaleFactor(0.8)
                     .padding(1)
@@ -143,31 +149,6 @@ struct BottomSheet: View {
             .background(Color("object")).cornerRadius(25)
         }.padding(.top, 65)
         .ignoresSafeArea(edges: .bottom).animation(.spring())
-    }
-}
-
-struct DragBar: View {
-    @Binding var offset : CGSize
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-            .frame(width: UIScreen.screenWidth * 0.1, height: UIScreen.screenHeight * 0.008)
-            .foregroundColor(Color("background"))
-            .frame(width: UIScreen.screenWidth * 0.9, height: UIScreen.screenHeight * 0.03)
-            .contentShape(Rectangle())
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        offset = CGSize(width: (gesture.translation.width), height: (gesture.translation.height)*2)
-                    }
-                    .onEnded { _ in
-                        if abs(offset.height) < UIScreen.screenHeight * 0.575 {
-                            offset.height = UIScreen.screenHeight * 0.06 // at top
-                        } else {
-                            offset.height = UIScreen.screenHeight * 0.65 // at bottom
-                        }
-                    }
-            )
     }
 }
 
@@ -209,14 +190,13 @@ struct CategoryCard: View {
 }
 
 struct StockCard: View {
-    var stock : Stock
+    @ObservedObject var stock : Stock
     @Binding var stockMode : StockMode
     @Binding var screenMode : ScreenMode
     @State var pendingDelete : Bool = false
-    var price = 5.00
     
     var body: some View {
-        let profit = (stock.shares * price)-stock.input > 0
+        let profit = (stock.shares * stock.price)-stock.input > 0
         
         RoundedRectangle(cornerRadius: 25)
             .foregroundColor(Color("object"))
@@ -242,22 +222,23 @@ struct StockCard: View {
                         .lineLimit(2).minimumScaleFactor(0.8)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(Color("text"))
-                    Text("$\(price, specifier: "%.2f")")
+                    
+                    Spacer()
+                    Text("$\(stock.price, specifier: "%.2f")")
                         .font(.system(.headline, design: .rounded))
                         .lineLimit(1).minimumScaleFactor(0.8)
                         .foregroundColor(Color("accentAlt"))
                     
-                    Spacer()
                     Divider()
-                    Text("$\(stock.shares * price, specifier: "%.0f")")
+                    Text("$\(stock.shares * stock.price, specifier: "%.0f")")
                         .font(.system(.title, design: .rounded)).bold()
                         .lineLimit(1).minimumScaleFactor(0.8)
                         .foregroundColor(Color("text"))
-                    Text("\(profit ? "$" : "-$")\(abs((stock.shares * price)-stock.input), specifier: "%.2f")")
+                    Text("\(profit ? "$" : "-$")\(abs((stock.shares * stock.price)-stock.input), specifier: "%.2f")")
                         .font(.system(.body, design: .rounded)).bold()
                         .lineLimit(1).minimumScaleFactor(0.8)
                         .foregroundColor(Color(profit ? "green" : "red"))
-                    Text("\(((stock.shares * price - stock.input)/stock.input)*100, specifier: "%.2f")%")
+                    Text("\(((stock.shares * stock.price - stock.input)/stock.input)*100, specifier: "%.2f")%")
                         .font(.system(.body, design: .rounded)).bold()
                         .lineLimit(1).minimumScaleFactor(0.8)
                         .foregroundColor(Color(profit ? "green" : "red"))
@@ -358,7 +339,7 @@ struct StockView: View {
         }
     }
 }
- 
+
 struct CategoryView: View {
     let categories = Category.categories
     
@@ -516,7 +497,7 @@ struct AddStock: View {
             .foregroundColor(Color("object"))
             
             
-        }.padding()
+        }.padding().ignoresSafeArea(.keyboard)
     }
 }
 
