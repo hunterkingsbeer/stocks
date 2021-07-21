@@ -14,6 +14,9 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
+        let portfolio = Portfolio(context: viewContext)
+        portfolio.total = 0
+        
         let stock1 = Stock(context: viewContext)
         stock1.id = UUID()
         stock1.title = "Meridian Energy"

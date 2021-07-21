@@ -10,30 +10,6 @@ import SwiftUI
 import CoreData
 import Swift
 
-extension Portfolio {
-    static func getPortfolioStats() -> [Any] {
-        let fetchRequest: NSFetchRequest<Portfolio> = Portfolio.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Portfolio.total, ascending: true)]
-        do {
-            let managedObjectContext = PersistenceController.shared.getContext()
-            let portfolio = try managedObjectContext.fetch(fetchRequest)
-            return portfolio
-          } catch let error as NSError {
-            print("Error fetching Folders: \(error.localizedDescription), \(error.userInfo)")
-          }
-        
-        return [0]
-    }
-}
-
-func getPortfolioTotal() -> Double {
-    var sum = 0.0
-    for stock in Stock.getStocks() {
-        sum += stock.shares * stock.price
-    }
-    return sum
-}
-
 func csvToArray(csv: String) -> [String] {
     return csv.components(separatedBy: ",")
 }

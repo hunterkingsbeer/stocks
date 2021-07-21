@@ -40,6 +40,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
                 .onAppear(perform: {
                     Stock.fetchAllStockData()
+                    Portfolio.updatePortfolioTotal()
                 })
             
             VStack {
@@ -96,6 +97,7 @@ extension UIScreen{
 
 struct BottomSheet: View {
     @Binding var screenMode : ScreenMode
+    @ObservedObject var portfolio = Portfolio.getPortfolio()
     
     var body: some View {
         VStack {
@@ -117,7 +119,7 @@ struct BottomSheet: View {
                     .foregroundColor(Color("background"))
                 }
                 
-                Text("$\(getPortfolioTotal(), specifier: "%.2f")")
+                Text("$\(portfolio.total, specifier: "%.2f")")
                     .font(.system(size: 50, design: .rounded)).bold()
                     .lineLimit(1).minimumScaleFactor(0.8)
                     .padding(1)
@@ -303,10 +305,8 @@ struct StockCard: View {
 }
 
 struct StockView: View {
-    /// Fetches Receipt entities in CoreData sorting by the NSSortDescriptor.
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Stock.title, ascending: true)], animation: .spring())
     /// Stores the fetched results as an array of Receipt objects.
-    var stocks: FetchedResults<Stock>
+    var stocks = Stock.getStocks()
     @Binding var stockMode : StockMode
     @Binding var screenMode : ScreenMode
     
