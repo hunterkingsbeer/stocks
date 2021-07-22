@@ -15,6 +15,7 @@ class Category {
     var subicons : String
     var tags : String
     var color : String
+    var id = UUID()
     
     init(title: String, symbol: String, icon: String, subicons: String, tags: String, color: String) {
         self.title = title
@@ -72,6 +73,22 @@ class Category {
             return groupObj.icon
         }
         return "circle.fill"
+    }
+    
+    static func availableCategories() -> [Category]{
+        var stockCategories : [String] = []
+        var avblCategories : [Category] = []
+        for stock in Stock.getStocks() {
+            if !stockCategories.contains(stock.category ?? ""){
+                stockCategories.append(stock.category?.lowercased() ?? "")
+            }
+        }
+        for category in categories {
+            if stockCategories.contains(category.symbol.lowercased()){
+                avblCategories.append(category)
+            }
+        }
+        return avblCategories
     }
     
     static func color(symbol: String) -> String {

@@ -21,7 +21,9 @@ extension Stock {
                     case .success(let value):
                         let json = JSON(value)
                         if let usPrice = json["c"].double {
-                            stock.price = usPrice
+                            if usPrice != 0 {
+                                stock.price = usPrice
+                            }
                         }
                     case .failure(let error):
                         print(error)
@@ -34,7 +36,7 @@ extension Stock {
     
     static func fetchStockData(symbol: String) {
         DispatchQueue.main.async {
-            AF.request(getFetchURL(symbol: symbol ?? "", demo: true), method: .get).validate().responseJSON { response in
+            AF.request(getFetchURL(symbol: symbol, demo: true), method: .get).validate().responseJSON { response in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
@@ -90,7 +92,7 @@ extension Stock {
             let stocks = try managedObjectContext.fetch(fetchRequest)
             return stocks
           } catch let error as NSError {
-            print("Error fetching Folders: \(error.localizedDescription), \(error.userInfo)")
+            print("Error fetching Stocks: \(error.localizedDescription), \(error.userInfo)")
           }
         return [Stock]()
     }
@@ -98,7 +100,7 @@ extension Stock {
     /// Deletes a stock
     static func delete(stock: Stock) {
         let viewContext = PersistenceController.shared.getContext()
-        print("Deleted folder: \(String(describing: stock.title))")
+        print("Deleted stock: \(String(describing: stock.title))")
         viewContext.delete(stock)
         save()
     }
