@@ -40,7 +40,6 @@ struct ContentView: View {
                 .ignoresSafeArea()
                 .onAppear(perform: {
                     Stock.fetchAllStockData()
-                    Portfolio.updatePortfolioTotal()
                 })
             
             VStack {
@@ -97,7 +96,6 @@ extension UIScreen{
 
 struct BottomSheet: View {
     @Binding var screenMode : ScreenMode
-    @ObservedObject var portfolio = Portfolio.getPortfolio()
     
     var body: some View {
         VStack {
@@ -119,7 +117,7 @@ struct BottomSheet: View {
                     .foregroundColor(Color("background"))
                 }
                 
-                Text("$\(portfolio.total, specifier: "%.2f")")
+                Text("$\(getPortfolioTotal(), specifier: "%.2f")")
                     .font(.system(size: 50, design: .rounded)).bold()
                     .lineLimit(1).minimumScaleFactor(0.8)
                     .padding(1)
@@ -151,6 +149,14 @@ struct BottomSheet: View {
             .background(Color("object")).cornerRadius(25)
         }.padding(.top, 65)
         .ignoresSafeArea(edges: .bottom).animation(.spring())
+    }
+    
+    func getPortfolioTotal() -> Double {
+        var sum = 0.0
+        for stock in Stock.getStocks() {
+            sum += stock.shares * stock.price
+        }
+        return sum
     }
 }
 
@@ -188,6 +194,44 @@ struct CategoryCard: View {
                     }.padding()
                 ).padding(1.5)
         }.frame(width: UIScreen.screenWidth * 0.5, height: UIScreen.screenHeight * 0.15)
+    }
+}
+
+struct StockView: View {
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Stock.input, ascending: false)],
+        animation: .spring())
+    var stocks: FetchedResults<Stock>
+    @Binding var stockMode : StockMode
+    @Binding var screenMode : ScreenMode
+    
+    var body: some View {
+        ZStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    if stocks.count > 0 {
+                        ForEach(stocks) { stock in
+                            StockCard(stock: stock, stockMode: $stockMode, screenMode: $screenMode)
+                                .frame(width: UIScreen.screenWidth * (screenMode == .stocks ? 0.9 : 0.4), height: UIScreen.screenHeight * (screenMode == .stocks ? 0.8 : 0.37))
+                        }
+                    } else {
+                        NoStocksCard()
+                    }
+                }.padding(.horizontal).padding(.top, screenMode == .stats ? 50 : 0).animation(.spring())
+            }
+            if stocks.count <= 0 {
+                HStack {
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Text("No stocks\nadded.")
+                        .font(.system(.title, design: .rounded))
+                        .foregroundColor(Color("object"))
+                        .padding()
+                    Spacer()
+                }
+            }
+        }
     }
 }
 
@@ -301,42 +345,6 @@ struct StockCard: View {
                     })
                 }.padding()
             )
-    }
-}
-
-struct StockView: View {
-    /// Stores the fetched results as an array of Receipt objects.
-    var stocks = Stock.getStocks()
-    @Binding var stockMode : StockMode
-    @Binding var screenMode : ScreenMode
-    
-    var body: some View {
-        ZStack {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    if stocks.count > 0 {
-                        ForEach(stocks) { stock in
-                            StockCard(stock: stock, stockMode: $stockMode, screenMode: $screenMode)
-                                .frame(width: UIScreen.screenWidth * (screenMode == .stocks ? 0.9 : 0.4), height: UIScreen.screenHeight * (screenMode == .stocks ? 0.8 : 0.37))
-                        }
-                    } else {
-                        NoStocksCard()
-                    }
-                }.padding(.horizontal).padding(.top, screenMode == .stats ? 50 : 0).animation(.spring())
-            }
-            if stocks.count <= 0 {
-                HStack {
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    Text("No stocks\nadded.")
-                        .font(.system(.title, design: .rounded))
-                        .foregroundColor(Color("object"))
-                        .padding()
-                    Spacer()
-                }
-            }
-        }
     }
 }
 

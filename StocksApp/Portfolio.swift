@@ -33,22 +33,24 @@ extension Portfolio {
         if !doesPortfolioExist() {
             let viewContext = PersistenceController.shared.getContext()
             let portfolio = Portfolio(context: viewContext)
+            print("created portfolio")
             portfolio.total = getPortfolioTotal()
         }
     }
     
     static func getPortfolioTotal() -> Double {
         var sum = 0.0
-        DispatchQueue.main.async {
-            for stock in Stock.getStocks() {
-                sum += stock.shares * stock.price
-            }
+        for stock in Stock.getStocks() {
+            sum += stock.shares * stock.price
         }
-        print(sum)
+        print("\(sum) Portfolio.getPortfolioTotal()")
         return sum
     }
     
     static func updatePortfolioTotal(){
+        if !doesPortfolioExist(){
+            createPortfolio()
+        }
         getPortfolio().total = getPortfolioTotal()
     }
     

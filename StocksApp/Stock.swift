@@ -32,6 +32,23 @@ extension Stock {
         save()
     }
     
+    static func fetchStockData(symbol: String) {
+        DispatchQueue.main.async {
+            AF.request(getFetchURL(symbol: symbol ?? "", demo: true), method: .get).validate().responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    if let usPrice = json["c"].double {
+                        getStock(symbol: symbol).price = usPrice
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        save()
+    }
+    
     static func getFetchURL(symbol: String, demo: Bool) -> String {
         let usKey = "c0guqcn48v6ttm1squcg"
         let demoKey = "sandbox_c0guqcn48v6ttm1squd0"
@@ -51,7 +68,8 @@ extension Stock {
         newStock.shares = shares
         newStock.category = category
         save()
-        print("New stock: \(title) folder")
+        fetchStockData(symbol: symbol)
+        print("New stock: \(title)")
     }
     
     static func getStock(symbol: String) -> Stock {

@@ -15,7 +15,7 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         
         let portfolio = Portfolio(context: viewContext)
-        portfolio.total = 0
+        portfolio.total = 0.0
         
         let stock1 = Stock(context: viewContext)
         stock1.id = UUID()
