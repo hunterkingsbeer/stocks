@@ -52,8 +52,8 @@ extension Stock {
     }
     
     static func getFetchURL(symbol: String, demo: Bool) -> String {
-        let usKey = "c0guqcn48v6ttm1squcg"
-        let demoKey = "sandbox_c0guqcn48v6ttm1squd0"
+        let usKey = API.getUSKey()
+        let demoKey = API.getDemoKey()
         
         return demo ? "https://finnhub.io/api/v1/quote?symbol=\(symbol)&token=\(demoKey)" : "https://finnhub.io/api/v1/quote?symbol=\(symbol)&token=\(usKey)"
     }

@@ -66,6 +66,7 @@ struct ContentView: View {
                         // stock scrollview
                         StockView(stockMode: $stockMode, screenMode: $screenMode, selectedCategory: $selectedCategory)
                             .transition(AnyTransition.move(edge: .trailing).combined(with: AnyTransition.opacity))
+                        
 
                         // category scrollview
                         CategoryView(selectedCategory: $selectedCategory)
@@ -107,30 +108,41 @@ struct StockView: View {
     @Binding var selectedCategory: String
     
     var body: some View {
-        ZStack {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    if stocks.count > 0 {
-                        ForEach(stocks.filter({ selectedCategory == "" ? ($0.category ?? "").count > 0 : $0.category!.localizedCaseInsensitiveContains(selectedCategory)})) { stock in
-                            StockCard(stock: stock, stockMode: $stockMode, screenMode: $screenMode)
-                                .frame(width: UIScreen.screenWidth * (screenMode == .stocks ? 0.9 : 0.4), height: UIScreen.screenHeight * (screenMode == .stocks ? 0.8 : 0.37))
-                        }
-                    } else {
-                        NoStocksCard()
-                    }
-                }.padding(.horizontal).padding(.top, screenMode == .stats ? 50 : 0).animation(.spring())
-            }
-            if stocks.count <= 0 {
-                HStack {
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    Text("No stocks\nadded.")
-                        .font(.system(.title, design: .rounded))
-                        .foregroundColor(Color("object"))
-                        .padding()
-                    Spacer()
+        /*TabView {
+            if stocks.count > 0 {
+                ForEach(stocks.filter({ selectedCategory == "" ? ($0.category ?? "").count > 0 : $0.category!.localizedCaseInsensitiveContains(selectedCategory)})) { stock in
+                    StockCard(stock: stock, stockMode: $stockMode, screenMode: $screenMode)
+                        .frame(width: UIScreen.screenWidth * (screenMode == .stocks ? 0.9 : 0.4), height: UIScreen.screenHeight * (screenMode == .stocks ? 0.8 : 0.37))
                 }
+            } else {
+                NoStocksCard()
+            }
+        }.tabViewStyle(PageTabViewStyle())*/
+        
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                if stocks.count > 0 {
+                    ForEach(stocks.filter({ selectedCategory == "" ? ($0.category ?? "").count > 0 : $0.category!.localizedCaseInsensitiveContains(selectedCategory)})) { stock in
+                        StockCard(stock: stock, stockMode: $stockMode, screenMode: $screenMode)
+                            .frame(width: UIScreen.screenWidth * (screenMode == .stocks ? 0.9 : 0.4), height: UIScreen.screenHeight * (screenMode == .stocks ? 0.8 : 0.37))
+                    }
+                } else {
+                    NoStocksCard()
+                }
+            }.padding(.horizontal).padding(.top, screenMode == .stats ? 50 : 0).animation(.spring())
+        }
+        
+        if stocks.count <= 0 {
+            HStack {
+                Spacer()
+                Spacer()
+                Spacer()
+                Text("No stocks\nadded.")
+                    .font(.system(.title, design: .rounded))
+                    .foregroundColor(Color("object"))
+                    .padding()
+                Spacer()
             }
         }
     }
@@ -440,7 +452,7 @@ struct BottomSheet: View {
         let profit = sum-input
         let percentage = ((sum-input)/input)*100
         
-        return [sum, sum-input, percentage.isNaN ? 0.0 : percentage]
+        return [sum, profit, percentage.isNaN ? 0.0 : percentage]
     }
     
 }
@@ -515,32 +527,14 @@ struct AddStockSheet: View {
                 .foregroundColor(Color("text"))
                 .padding(.horizontal).padding(.top, 20)
             
-            CustomTextField(placeholder: "Title", text: $title)
-                .font(.system(.title, design: .rounded))
-                .foregroundColor(Color("accentAlt"))
-                .padding()
-                .background(Color("object")).cornerRadius(25)
-                .padding(.horizontal)
+            InputField(field: $title, placeholder: "Title")
             
-            CustomTextField(placeholder: "Symbol", text: $symbol)
-                .font(.system(.title, design: .rounded))
-                .foregroundColor(Color("accentAlt"))
-                .padding()
-                .background(Color("object")).cornerRadius(25)
-                .padding(.horizontal)
+            InputField(field: $symbol, placeholder: "Symbol")
             
             HStack {
-                CustomTextField(placeholder: "Shares", text: $shares)
-                    .font(.system(.title, design: .rounded))
-                    .foregroundColor(Color("accentAlt"))
-                    .padding()
-                    .background(Color("object")).cornerRadius(25)
+                InputField(field: $shares, placeholder: "Shares", decimalOnly: true, horizontalStack: true)
                 
-                CustomTextField(placeholder: "Input", text: $input)
-                    .font(.system(.title, design: .rounded))
-                    .foregroundColor(Color("accentAlt"))
-                    .padding()
-                    .background(Color("object")).cornerRadius(25)
+                InputField(field: $input, placeholder: "Input", decimalOnly: true, horizontalStack: true)
             }.padding(.horizontal)
             
             VStack{
@@ -619,3 +613,20 @@ struct AddStockSheet: View {
     }
 }
 
+
+struct InputField: View {
+    @Binding var field: String
+    var placeholder: String
+    var decimalOnly: Bool = false
+    var horizontalStack: Bool = false
+    
+    var body: some View {
+        CustomTextField(placeholder: placeholder, text: $field)
+            .keyboardType(decimalOnly ? .decimalPad : .default)
+            .font(.system(.title, design: .rounded))
+            .foregroundColor(Color("accentAlt"))
+            .padding()
+            .background(Color("object")).cornerRadius(25)
+            .padding(.horizontal, horizontalStack ? 0 : 15)
+    }
+}
