@@ -17,7 +17,7 @@
 		5A5E5DC72691843000070511 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5E5DC62691843000070511 /* Category.swift */; };
 		5A5E5DCA26A7CB3100070511 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5E5DC926A7CB3100070511 /* SwiftyJSON */; };
 		5A5E5DCD26A7CB6600070511 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5E5DCC26A7CB6600070511 /* Alamofire */; };
-		5A74545E26AD2A710098659F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A74545D26AD2A710098659F /* API.swift */; };
+		5A74546026AD4E600098659F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A74545F26AD4E600098659F /* Keys.swift */; };
 		5ACB87D926A7E81B00727DF7 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB87D826A7E81B00727DF7 /* UserSettings.swift */; };
 		5ACB87DB26A8368100727DF7 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB87DA26A8368100727DF7 /* Stock.swift */; };
 		5ACB87DD26A84E5900727DF7 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB87DC26A84E5900727DF7 /* Portfolio.swift */; };
@@ -34,7 +34,7 @@
 		5A0C086E268AE912000ACDF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A5E5DC42691764B00070511 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		5A5E5DC62691843000070511 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		5A74545D26AD2A710098659F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		5A74545F26AD4E600098659F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		5ACB87D826A7E81B00727DF7 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		5ACB87DA26A8368100727DF7 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		5ACB87DC26A84E5900727DF7 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				5ACB87D826A7E81B00727DF7 /* UserSettings.swift */,
 				5ACB87DA26A8368100727DF7 /* Stock.swift */,
 				5ACB87DC26A84E5900727DF7 /* Portfolio.swift */,
-				5A74545D26AD2A710098659F /* API.swift */,
+				5A74545F26AD4E600098659F /* Keys.swift */,
 			);
 			path = StocksApp;
 			sourceTree = "<group>";
@@ -178,7 +178,7 @@
 				5A0C0863268AE90E000ACDF0 /* ContentView.swift in Sources */,
 				5ACB87DB26A8368100727DF7 /* Stock.swift in Sources */,
 				5ACB87DD26A84E5900727DF7 /* Portfolio.swift in Sources */,
-				5A74545E26AD2A710098659F /* API.swift in Sources */,
+				5A74546026AD4E600098659F /* Keys.swift in Sources */,
 				5A0C086D268AE912000ACDF0 /* StocksApp.xcdatamodeld in Sources */,
 				5A5E5DC52691764B00070511 /* Utilities.swift in Sources */,
 				5ACB87D926A7E81B00727DF7 /* UserSettings.swift in Sources */,
