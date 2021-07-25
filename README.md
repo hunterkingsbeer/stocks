@@ -1,4 +1,7 @@
 # Investment Portfolio iOS App
+
+[![Swift](https://github.com/hunterkingsbeer/stocks/actions/workflows/swift.yml/badge.svg)](https://github.com/hunterkingsbeer/stocks/actions/workflows/swift.yml)
+
 An iOS app to track my investments.
 Other apps I've tried weren't very good, so I created this.
 
