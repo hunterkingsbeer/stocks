@@ -449,8 +449,8 @@ struct BottomSheet: View {
             input += stock.input
         }
         
-        let profit = sum-input
-        let percentage = ((sum-input)/input)*100
+        let profit: Double = sum-input
+        let percentage: Double = ((sum-input)/input)*100
         
         return [sum, profit, percentage.isNaN ? 0.0 : percentage]
     }
@@ -529,7 +529,7 @@ struct AddStockSheet: View {
             
             InputField(field: $title, placeholder: "Title")
             
-            InputField(field: $symbol, placeholder: "Symbol")
+            InputField(field: $symbol, placeholder: "Symbol", capitalized: true)
             
             HStack {
                 InputField(field: $shares, placeholder: "Shares", decimalOnly: true, horizontalStack: true)
@@ -619,10 +619,12 @@ struct InputField: View {
     var placeholder: String
     var decimalOnly: Bool = false
     var horizontalStack: Bool = false
+    var capitalized: Bool = false
     
     var body: some View {
         CustomTextField(placeholder: placeholder, text: $field)
             .keyboardType(decimalOnly ? .decimalPad : .default)
+            .autocapitalization(capitalized ? .allCharacters : .words)
             .font(.system(.title, design: .rounded))
             .foregroundColor(Color("accentAlt"))
             .padding()

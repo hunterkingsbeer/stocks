@@ -316,7 +316,7 @@
 				DEVELOPMENT_TEAM = TJ3X96WH43;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StocksApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,7 +338,7 @@
 				DEVELOPMENT_TEAM = TJ3X96WH43;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StocksApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
