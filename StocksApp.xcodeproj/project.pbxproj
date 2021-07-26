@@ -18,10 +18,29 @@
 		5A5E5DCA26A7CB3100070511 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5E5DC926A7CB3100070511 /* SwiftyJSON */; };
 		5A5E5DCD26A7CB6600070511 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5E5DCC26A7CB6600070511 /* Alamofire */; };
 		5A74546026AD4E600098659F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A74545F26AD4E600098659F /* Keys.swift */; };
+		5A827F4726AE5469001A3E2D /* StocksAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A827F4626AE5469001A3E2D /* StocksAppUITests.swift */; };
+		5A827F5526AE5477001A3E2D /* StocksAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A827F5426AE5477001A3E2D /* StocksAppTests.swift */; };
 		5ACB87D926A7E81B00727DF7 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB87D826A7E81B00727DF7 /* UserSettings.swift */; };
 		5ACB87DB26A8368100727DF7 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB87DA26A8368100727DF7 /* Stock.swift */; };
 		5ACB87DD26A84E5900727DF7 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB87DC26A84E5900727DF7 /* Portfolio.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A827F4926AE5469001A3E2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A0C0855268AE90D000ACDF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A0C085C268AE90D000ACDF0;
+			remoteInfo = StocksApp;
+		};
+		5A827F5726AE5477001A3E2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A0C0855268AE90D000ACDF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A0C085C268AE90D000ACDF0;
+			remoteInfo = StocksApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5A0C085D268AE90D000ACDF0 /* StocksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StocksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +54,12 @@
 		5A5E5DC42691764B00070511 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		5A5E5DC62691843000070511 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5A74545F26AD4E600098659F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		5A827F4426AE5469001A3E2D /* StocksAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StocksAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A827F4626AE5469001A3E2D /* StocksAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksAppUITests.swift; sourceTree = "<group>"; };
+		5A827F4826AE5469001A3E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A827F5226AE5477001A3E2D /* StocksAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StocksAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A827F5426AE5477001A3E2D /* StocksAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksAppTests.swift; sourceTree = "<group>"; };
+		5A827F5626AE5477001A3E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ACB87D826A7E81B00727DF7 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		5ACB87DA26A8368100727DF7 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		5ACB87DC26A84E5900727DF7 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
@@ -50,6 +75,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5A827F4126AE5469001A3E2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A827F4F26AE5477001A3E2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -57,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				5A0C085F268AE90D000ACDF0 /* StocksApp */,
+				5A827F4526AE5469001A3E2D /* StocksAppUITests */,
+				5A827F5326AE5477001A3E2D /* StocksAppTests */,
 				5A0C085E268AE90D000ACDF0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				5A0C085D268AE90D000ACDF0 /* StocksApp.app */,
+				5A827F4426AE5469001A3E2D /* StocksAppUITests.xctest */,
+				5A827F5226AE5477001A3E2D /* StocksAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +140,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5A827F4526AE5469001A3E2D /* StocksAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5A827F4626AE5469001A3E2D /* StocksAppUITests.swift */,
+				5A827F4826AE5469001A3E2D /* Info.plist */,
+			);
+			path = StocksAppUITests;
+			sourceTree = "<group>";
+		};
+		5A827F5326AE5477001A3E2D /* StocksAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				5A827F5426AE5477001A3E2D /* StocksAppTests.swift */,
+				5A827F5626AE5477001A3E2D /* Info.plist */,
+			);
+			path = StocksAppTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,6 +182,42 @@
 			productReference = 5A0C085D268AE90D000ACDF0 /* StocksApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5A827F4326AE5469001A3E2D /* StocksAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A827F4B26AE5469001A3E2D /* Build configuration list for PBXNativeTarget "StocksAppUITests" */;
+			buildPhases = (
+				5A827F4026AE5469001A3E2D /* Sources */,
+				5A827F4126AE5469001A3E2D /* Frameworks */,
+				5A827F4226AE5469001A3E2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A827F4A26AE5469001A3E2D /* PBXTargetDependency */,
+			);
+			name = StocksAppUITests;
+			productName = StocksAppUITests;
+			productReference = 5A827F4426AE5469001A3E2D /* StocksAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		5A827F5126AE5477001A3E2D /* StocksAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A827F5926AE5477001A3E2D /* Build configuration list for PBXNativeTarget "StocksAppTests" */;
+			buildPhases = (
+				5A827F4E26AE5477001A3E2D /* Sources */,
+				5A827F4F26AE5477001A3E2D /* Frameworks */,
+				5A827F5026AE5477001A3E2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A827F5826AE5477001A3E2D /* PBXTargetDependency */,
+			);
+			name = StocksAppTests;
+			productName = StocksAppTests;
+			productReference = 5A827F5226AE5477001A3E2D /* StocksAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -132,6 +229,14 @@
 				TargetAttributes = {
 					5A0C085C268AE90D000ACDF0 = {
 						CreatedOnToolsVersion = 12.5;
+					};
+					5A827F4326AE5469001A3E2D = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 5A0C085C268AE90D000ACDF0;
+					};
+					5A827F5126AE5477001A3E2D = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 5A0C085C268AE90D000ACDF0;
 					};
 				};
 			};
@@ -153,6 +258,8 @@
 			projectRoot = "";
 			targets = (
 				5A0C085C268AE90D000ACDF0 /* StocksApp */,
+				5A827F4326AE5469001A3E2D /* StocksAppUITests */,
+				5A827F5126AE5477001A3E2D /* StocksAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -164,6 +271,20 @@
 			files = (
 				5A0C0868268AE912000ACDF0 /* Preview Assets.xcassets in Resources */,
 				5A0C0865268AE912000ACDF0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A827F4226AE5469001A3E2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A827F5026AE5477001A3E2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +308,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5A827F4026AE5469001A3E2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A827F4726AE5469001A3E2D /* StocksAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A827F4E26AE5477001A3E2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A827F5526AE5477001A3E2D /* StocksAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A827F4A26AE5469001A3E2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A0C085C268AE90D000ACDF0 /* StocksApp */;
+			targetProxy = 5A827F4926AE5469001A3E2D /* PBXContainerItemProxy */;
+		};
+		5A827F5826AE5477001A3E2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A0C085C268AE90D000ACDF0 /* StocksApp */;
+			targetProxy = 5A827F5726AE5477001A3E2D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5A0C086F268AE912000ACDF0 /* Debug */ = {
@@ -350,6 +500,84 @@
 			};
 			name = Release;
 		};
+		5A827F4C26AE5469001A3E2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TJ3X96WH43;
+				INFOPLIST_FILE = StocksAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kingsbeer.StocksAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StocksApp;
+			};
+			name = Debug;
+		};
+		5A827F4D26AE5469001A3E2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TJ3X96WH43;
+				INFOPLIST_FILE = StocksAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kingsbeer.StocksAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StocksApp;
+			};
+			name = Release;
+		};
+		5A827F5A26AE5477001A3E2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TJ3X96WH43;
+				INFOPLIST_FILE = StocksAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kingsbeer.StocksAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StocksApp.app/StocksApp";
+			};
+			name = Debug;
+		};
+		5A827F5B26AE5477001A3E2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TJ3X96WH43;
+				INFOPLIST_FILE = StocksAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kingsbeer.StocksAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StocksApp.app/StocksApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -367,6 +595,24 @@
 			buildConfigurations = (
 				5A0C0872268AE912000ACDF0 /* Debug */,
 				5A0C0873268AE912000ACDF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A827F4B26AE5469001A3E2D /* Build configuration list for PBXNativeTarget "StocksAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A827F4C26AE5469001A3E2D /* Debug */,
+				5A827F4D26AE5469001A3E2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A827F5926AE5477001A3E2D /* Build configuration list for PBXNativeTarget "StocksAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A827F5A26AE5477001A3E2D /* Debug */,
+				5A827F5B26AE5477001A3E2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
