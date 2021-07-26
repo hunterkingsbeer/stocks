@@ -59,7 +59,7 @@ struct ContentView: View {
                                 .foregroundColor(Color("text"))
                                 .font(.title)
                         )
-                }.padding(.horizontal).padding(.bottom, 1)
+                }.padding(.horizontal).padding(.bottom, 1.0)
                 
                 ScrollView([], showsIndicators: false) {
                     VStack {
@@ -130,7 +130,7 @@ struct StockView: View {
                 } else {
                     NoStocksCard()
                 }
-            }.padding(.horizontal).padding(.top, screenMode == .stats ? 50 : 0).animation(.spring())
+            }.padding(.horizontal).padding(.top, screenMode == .stats ? 50.0 : CGFloat(0.0)).animation(.spring())
         }
         
         if stocks.count <= 0 {
@@ -174,7 +174,7 @@ struct StockCard: View {
                         Image(systemName: Category.icon(symbol: stock.category ?? ""))
                             .font(.system(.footnote))
                             .foregroundColor(Color(Category.color(symbol: stock.category ?? "")))
-                    }.padding(.bottom, 1)
+                    }.padding(.bottom, 1.0)
                     
                     Text("\(stock.title ?? "").")
                         .font(.system(.title, design: .rounded))
@@ -342,7 +342,7 @@ struct ActionView: View {
                                 Text("Add Stock").font(.system(.body, design: .rounded))
                                 Spacer()
                                 Image(systemName: "cursorarrow.rays")
-                            }.padding(12)
+                            }.padding(12.0)
                         )
                 }.buttonStyle(ShrinkingButton())
                 .sheet(isPresented: $addingStock) {
@@ -359,7 +359,7 @@ struct ActionView: View {
                             HStack{
                                 Text("Edit Stock").font(.system(.body, design: .rounded))
                                 Image(systemName: "slider.horizontal.3")
-                            }.padding(12)
+                            }.padding(12.0)
                         )
                 }.buttonStyle(ShrinkingButton())
                 
@@ -373,7 +373,7 @@ struct ActionView: View {
                             HStack{
                                 Text("Delete Stock").font(.system(.body, design: .rounded))
                                 Image(systemName: "trash.fill")
-                            }.padding(12)
+                            }.padding(12.0)
                         )
                 }.buttonStyle(ShrinkingButton())
             }.padding(.horizontal)
@@ -407,7 +407,7 @@ struct BottomSheet: View {
                 Text("$\(getPortfolioStats()[0], specifier: "%.2f")")
                     .font(.system(size: 50, design: .rounded)).bold()
                     .lineLimit(1).minimumScaleFactor(0.8)
-                    .padding(1)
+                    .padding(1.0)
                 
                 Divider()
                 
@@ -434,9 +434,9 @@ struct BottomSheet: View {
                 if screenMode == .stats {
                     Spacer()
                 }
-            }.padding().padding(.bottom, 20)
+            }.padding().padding(.bottom, 20.0)
             .background(Color("object")).cornerRadius(25)
-        }.padding(.top, 65)
+        }.padding(.top, 65.0)
         .ignoresSafeArea(edges: .bottom).animation(.spring())
     }
     
@@ -479,7 +479,7 @@ struct NoStocksCard: View {
                         Image(systemName: Category.icon(symbol: "power"))
                             .font(.system(.footnote))
                             .foregroundColor(Color(Category.color(symbol: "power")))
-                    }.padding(.bottom, 1)
+                    }.padding(.bottom, 1.0)
                     
                     Text("Add")
                         .font(.system(.title, design: .rounded))
@@ -525,7 +525,7 @@ struct AddStockSheet: View {
             Text("New Stock.")
                 .font(.system(.largeTitle, design: .rounded))
                 .foregroundColor(Color("text"))
-                .padding(.horizontal).padding(.top, 20)
+                .padding(.horizontal).padding(.top, 20.0)
             
             InputField(field: $title, placeholder: "Title")
             
@@ -629,6 +629,6 @@ struct InputField: View {
             .foregroundColor(Color("accentAlt"))
             .padding()
             .background(Color("object")).cornerRadius(25)
-            .padding(.horizontal, horizontalStack ? 0 : 15)
+            .padding(.horizontal, horizontalStack ? CGFloat(0.0) : 15.0)
     }
 }

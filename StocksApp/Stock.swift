@@ -52,8 +52,8 @@ extension Stock {
     }
     
     static func getFetchURL(symbol: String, demo: Bool) -> String {
-        let usKey = Keys.getUSKey()
-        let demoKey = Keys.getDemoKey()
+        let usKey: String = Keys.getUSKey()
+        let demoKey: String = Keys.getDemoKey()
         
         return demo ? "https://finnhub.io/api/v1/quote?symbol=\(symbol)&token=\(demoKey)" : "https://finnhub.io/api/v1/quote?symbol=\(symbol)&token=\(usKey)"
     }
@@ -119,6 +119,6 @@ extension Stock {
     
     /// returns the color relating to the stocks "action" button
     static func color(stockMode: StockMode, pendingDelete: Bool) -> String {
-        return stockMode == .editing ? "yellow" : stockMode == .deleting ? pendingDelete ? "red" : "accent" : "accent"
+        return stockMode == .editing ? "yellow" : (stockMode == .deleting ? (pendingDelete ? "red" : "accent") : "accent")
     }
 }
