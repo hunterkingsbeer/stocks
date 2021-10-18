@@ -67,7 +67,6 @@ struct ContentView: View {
                         StockView(stockMode: $stockMode, screenMode: $screenMode, selectedCategory: $selectedCategory)
                             .transition(AnyTransition.move(edge: .trailing).combined(with: AnyTransition.opacity))
                         
-
                         // category scrollview
                         CategoryView(selectedCategory: $selectedCategory)
                             .transition(AnyTransition.move(edge: .trailing).combined(with: AnyTransition.opacity))
@@ -108,41 +107,31 @@ struct StockView: View {
     @Binding var selectedCategory: String
     
     var body: some View {
-        /*TabView {
-            if stocks.count > 0 {
-                ForEach(stocks.filter({ selectedCategory == "" ? ($0.category ?? "").count > 0 : $0.category!.localizedCaseInsensitiveContains(selectedCategory)})) { stock in
-                    StockCard(stock: stock, stockMode: $stockMode, screenMode: $screenMode)
-                        .frame(width: UIScreen.screenWidth * (screenMode == .stocks ? 0.9 : 0.4), height: UIScreen.screenHeight * (screenMode == .stocks ? 0.8 : 0.37))
-                }
-            } else {
-                NoStocksCard()
-            }
-        }.tabViewStyle(PageTabViewStyle())*/
-        
-        
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                if stocks.count > 0 {
-                    ForEach(stocks.filter({ selectedCategory == "" ? ($0.category ?? "").count > 0 : $0.category!.localizedCaseInsensitiveContains(selectedCategory)})) { stock in
-                        StockCard(stock: stock, stockMode: $stockMode, screenMode: $screenMode)
-                            .frame(width: UIScreen.screenWidth * (screenMode == .stocks ? 0.9 : 0.4), height: UIScreen.screenHeight * (screenMode == .stocks ? 0.8 : 0.37))
+        ZStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    if stocks.count > 0 {
+                        ForEach(stocks/*.filter({ selectedCategory == "" ? ($0.category ?? "").count > 0 : $0.category!.localizedCaseInsensitiveContains(selectedCategory)})*/) { stock in
+                            StockCard(stock: stock, stockMode: $stockMode, screenMode: $screenMode)
+                                .frame(width: UIScreen.screenWidth * (screenMode == .stocks ? 0.9 : 0.4), height: UIScreen.screenHeight * (screenMode == .stocks ? 0.8 : 0.37))
+                        }
+                    } else {
+                        NoStocksCard()
                     }
-                } else {
-                    NoStocksCard()
+                }.padding(.horizontal).padding(.top, screenMode == .stats ? 50.0 : CGFloat(0.0)).animation(.spring())
+            }
+            
+            if stocks.count <= 0 {
+                HStack {
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Text("No stocks\nadded.")
+                        .font(.system(.title, design: .rounded))
+                        .foregroundColor(Color("object"))
+                        .padding()
+                    Spacer()
                 }
-            }.padding(.horizontal).padding(.top, screenMode == .stats ? 50.0 : CGFloat(0.0)).animation(.spring())
-        }
-        
-        if stocks.count <= 0 {
-            HStack {
-                Spacer()
-                Spacer()
-                Spacer()
-                Text("No stocks\nadded.")
-                    .font(.system(.title, design: .rounded))
-                    .foregroundColor(Color("object"))
-                    .padding()
-                Spacer()
             }
         }
     }
@@ -187,9 +176,9 @@ struct StockCard: View {
                     }
                     
                     Spacer()
-                    Text("$\(stock.price, specifier: "%.2f")")
+                    Text("$\(stock.price, specifier: "%.2f")/share")
                         .font(.system(.headline, design: .rounded))
-                        .lineLimit(1).minimumScaleFactor(0.8)
+                        .lineLimit(2).minimumScaleFactor(0.8)
                         .foregroundColor(Color("accentAlt"))
                     
                     Divider()
@@ -319,6 +308,7 @@ struct CategoryCard: View {
                     ).padding(1.5)
             }.frame(width: UIScreen.screenWidth * 0.5, height: UIScreen.screenHeight * 0.15)
         }.buttonStyle(ShrinkingButton())
+            .onAppear(perform: { print("yeo") })
     }
     func isSelected() -> Bool {
         return selectedCategory == category.symbol
